@@ -1,0 +1,4 @@
+// 08/10/19
+Switched Development to Linux and fractured leg.
+Slight Delay expected.
+Errors installing Flask
