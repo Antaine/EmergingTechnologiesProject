@@ -8,4 +8,3 @@ Tensorflow set up.
 Canvas Created.
 Set up done.
 Catching up on labs.
-
