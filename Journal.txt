@@ -4,3 +4,6 @@ Slight Delay expected.
 Errors installing Flask
 Installs and Enviorment setup.
 Found a house, More Work can be done
+Tensorflow set up.
+Canvas Created.
+
