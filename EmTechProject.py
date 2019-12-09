@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 #with gzip.open('data/t10k-images-idx3-ubyte.gz', 'rb') as f:
  #   file_content = f.read()
-
+#Test login credentials
 app = Flask(__name__)
 
 @app.route('/')
@@ -22,3 +22,4 @@ def hello():
 print("hello")
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 class_names = ['0', '1', '2', '3', '4','5', '6', '7', '8', '9']
+len(train_labels)
