@@ -12,16 +12,39 @@
       canvas {
         background-color: white;
         margin: 5%;
-        width: 100%;
-        height: 10%
+        /*width: 100%;*/
+        height: 20%;
+        align-self: center;
       }
+
+      div.paint{
+        position: relative;
+        width: 90%;
+
+      } 
+
+      div.btnY{
+        position: relative;
+      }
+
+      div.btnX{
+        width: 40%;
+        display: flex;
+        justify-content: center; 
+      }
+       
     </style>
   </head>
 
   <body data-rsssl=1>
   	<div id="paint">
       <canvas id="myCanvas"></canvas>
-      </div>
+    </div>
+
+    <div id="btn" class="btnY">
+      <div id="btnX"><button>Clear</button>
+      <button>Calculate</button></div>
+    </div>
     <script>
       var canvas = document.getElementById('myCanvas');
       var ctx = canvas.getContext('2d');
@@ -38,7 +61,7 @@
         mouse.y = e.pageY - this.offsetTop;
       }, false);
 
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 2;
       ctx.lineJoin = 'round';
       ctx.lineCap = 'round';
       ctx.strokeStyle = '#00CC99';
@@ -56,9 +79,13 @@
       var onPaint = function() {
           ctx.lineTo(mouse.x, mouse.y);
           ctx.stroke();
-          var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-          window.location.href=image; // it will save locally
+       /*   var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+          window.location.href=image; // it will save locally*/
       };
     </script>
+       <!-- Link  to Script
+
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <-->
   </body>
 </html>            
