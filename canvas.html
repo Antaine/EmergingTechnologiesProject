@@ -44,7 +44,7 @@
 
     <div id="btn" class="btnY">
       <div id="btnX">
-        <button onclick="onClear">Clear</button>
+        <button onclick="onClear()">Clear</button>
         <button>Calculate</button></div>
     </div>
     <script>
@@ -83,12 +83,17 @@
           ctx.lineTo(mouse.x, mouse.y);
           ctx.stroke();
 
+
       };
 
-      var onClear = function() {
+   /*   var onClear = function() {
          // ctx.Clear();
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           console.log("Test");
+      };*/
+
+      function onClear() {
+         ctx.clearRect(0, 0, canvas.width, canvas.height);
       };
 
       var onSave = function() {
