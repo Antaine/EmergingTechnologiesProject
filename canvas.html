@@ -2,6 +2,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <meta charset="UTF-8">
     <style>
       body {
         margin: 0px;
@@ -42,12 +43,14 @@
     </div>
 
     <div id="btn" class="btnY">
-      <div id="btnX"><button>Clear</button>
-      <button>Calculate</button></div>
+      <div id="btnX">
+        <button onclick="onClear">Clear</button>
+        <button>Calculate</button></div>
     </div>
     <script>
       var canvas = document.getElementById('myCanvas');
-      var ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d');
+
  
       var painting = document.getElementById('paint');
       var paint_style = getComputedStyle(painting);
@@ -79,7 +82,19 @@
       var onPaint = function() {
           ctx.lineTo(mouse.x, mouse.y);
           ctx.stroke();
-       /*   var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+
+      };
+
+      var onClear = function() {
+         // ctx.Clear();
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          console.log("Test");
+      };
+
+      var onSave = function() {
+          ctx.Clear();
+
+                 /*   var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
           window.location.href=image; // it will save locally*/
       };
     </script>
