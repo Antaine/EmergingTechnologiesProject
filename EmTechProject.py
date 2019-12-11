@@ -1,26 +1,20 @@
 #Emerging Tech Project: Antaine Ó Conghaile - G00347577
 
 from flask import Flask, escape, request
-import numpy as np
-import pandas as pd
-import gzip
-import tensorflow as tf
-import keras as ks
-from tensorflow import keras
-from keras.datasets import mnist
-import matplotlib.pyplot as plt
+import flask as fl
 
 #with gzip.open('data/t10k-images-idx3-ubyte.gz', 'rb') as f:
  #   file_content = f.read()
 #Test login credentials
-app = Flask(__name__)
+app = fl.Flask(__name__)
 
 @app.route('/')
-def hello():
-    name = request.args.get("name", "World")
-    return f'Hello, {escape(name)}!'
+def home():
+	return app.send_static_file('canvas.html')
 
-print("hello")
-#(x_train, y_train), (x_test, y_test) = mnist.load_data()
-#class_names = ['0', '1', '2', '3', '4','5', '6', '7', '8', '9']
-#len(train_labels)
+#@app.route('/predict', methods=['GET','POST'])
+#def calculate():
+		#howmany = int(fl.request.values.get("noofnos", "1"))
+#		return null
+
+#print("hello")
