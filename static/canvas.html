@@ -47,6 +47,8 @@
         <button onclick="onClear()">Clear</button>
         <button onclick="onSave1()">Calculate</button></div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script>
       var canvas = document.getElementById('myCanvas');
       const ctx = canvas.getContext('2d');
@@ -103,11 +105,34 @@
         window.location.href=image; // it will save locally*/
       };
 
+      var image64 = canvas.toDataURL
+     // 
+
       var onSave1 = function()
       {
+        var canvas = document.getElementById('myCanvas');
+        var dataURL = canvas.toDataURL();
+        console.log(canvas.toDataURL());
+        //Ajax
+        $.ajax({
+          type: 'POST',
+          url:'/image',
+          data: {
+            imgBase64: dataURL
+          }
+        }).done(function (data){
+          console.log('Posted');
+          console.log(data);
+          $("#predictedNumber").empty().append(data);
+        });
+      }
         
-      var dataURL = canvas.toDataURL();
-      $.ajax({
+    /*  var dataURL = canvas.toDataURL();
+      console.log(dataURL);
+      $.POST("/calculate",{"image": dataURL}, function(data){
+
+      })*/
+     /* $.ajax({
           type: "POST",
           url: "script.php",
           data: { 
@@ -119,9 +144,8 @@
           // - please modify the callback in javascript. All you
           // need is to return the url to the file, you just saved 
           // and than put the image in your browser.
-        });
-      }
-
+        });*/
+      
     </script>
        <!-- Link  to Script
 
