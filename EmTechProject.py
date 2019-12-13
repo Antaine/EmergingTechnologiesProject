@@ -37,7 +37,9 @@ def getImage():
 
 	# Resize img
 	mnistImage = ImageOps.fit(numImage, size, Image.ANTIALIAS)
-	
+	#Save Image	
+	mnistImage.save("reImg.png")
+	numImage = cv2.imread("reImg.png")
 
 	return null
 
