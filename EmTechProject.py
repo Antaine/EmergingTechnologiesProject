@@ -8,10 +8,17 @@ import tensorflow as tf
 import base64
 import cv2
 from PIL import Image, ImageOps
+#graph = tf.get_default_graph()
 #with gzip.open('data/t10k-images-idx3-ubyte.gz', 'rb') as f:
  #   file_content = f.read()
 #Test login credentials
 app = fl.Flask(__name__)
+
+#Variables
+x = 28
+y = 28
+area = y, x
+
 
 @app.route('/')
 def home():
@@ -26,8 +33,13 @@ def getImage():
 	with open ('image.png', 'wb') as f:
 		f.write(deImage)
 		numImage = Image.open(image.png)
-		return null
+	
 
+	# Resize img
+	mnistImage = ImageOps.fit(numImage, size, Image.ANTIALIAS)
+	
+
+	return null
 
 app.run()
 
