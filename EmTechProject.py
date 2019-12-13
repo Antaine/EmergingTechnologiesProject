@@ -41,6 +41,10 @@ def getImage():
 	mnistImage.save("reImg.png")
 	numImage = cv2.imread("reImg.png")
 
+	gSImg = cv2.cvtColor(reImg, cv2.COLOR_BGR2GRAY)
+	gSArray = np.array(grayScaleImage, dtype=np.float32).reshape(1, 784)
+	grayScaleArray /= 255
+
 	return null
 
 app.run()
