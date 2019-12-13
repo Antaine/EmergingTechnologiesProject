@@ -1,6 +1,6 @@
 #Emerging Tech Project: Antaine Ó Conghaile - G00347577
 
-from flask import Flask, escape, request
+from flask import Flask,render_template,request
 import flask as fl
 import numpy as np
 import keras as kr 
@@ -8,19 +8,31 @@ import tensorflow as tf
 import base64
 import cv2
 from PIL import Image, ImageOps
-from keras.models import load_model
+#from keras.models import load_mode
+#from tensorflow import keras
+#from tensorflow.keras import layers
+#from tensorflow.keras.models import Sequential, load_model
+#from tensorflow.keras.models import Sequential
+#from tensorflow.keras.models import Sequential
+#from keras.models import load_model
 
-#graph = tf.get_default_graph()
+
 #with gzip.open('data/t10k-images-idx3-ubyte.gz', 'rb') as f:
  #   file_content = f.read()
 #Test login credentials
 app = fl.Flask(__name__)
+model = kr.models.load_model('model.h5')
 
 #Variables
 x = 28
 y = 28
 area = y, x
 
+#graph = tf.get_default_graph()
+
+
+#model =  kr.models.load_model('model.h5')
+#model = kr.models.load_model('model.h5')
 
 @app.route('/')
 def home():
@@ -29,25 +41,32 @@ def home():
 
 @app.route('/image',methods=['POST'])
 def getImage():
-	cryptImage = fl.request.values[('imgBase64')]
-	deImage = base64.b64decode(cryptImage[22:])
 
-	with open ('image.png', 'wb') as f:
-		f.write(deImage)
-		numImage = Image.open(image.png)
-	
+	global graph
+	with graph.as_default():
+		cryptImage = fl.request.values[('imgBase64')]
+		deImage = base64.b64decode(cryptImage[22:])
 
-	# Resize img
-	mnistImage = ImageOps.fit(numImage, size, Image.ANTIALIAS)
-	#Save Image	
-	mnistImage.save("reImg.png")
-	numImage = cv2.imread("reImg.png")
+		with open ('image.png', 'wb') as f:
+			f.write(deImage)
+		userImage = Image.open("image.png")
 
-	gSImg = cv2.cvtColor(reImg, cv2.COLOR_BGR2GRAY)
-	gSArray = np.array(grayScaleImage, dtype=np.float32).reshape(1, 784)
-	grayScaleArray /= 255
+	   	# Resizing the image so it is suitable for the MNIST dataset
+	   	# Sourced from: https://github.com/python-pillow/Pillow/blob/3.0.x/docs/reference/Image.rst
+		mnistImage = ImageOps.fit(userImage, area, Image.ANTIALIAS)
 
-	return null
+	    # Saving and loading the new resized images
+		mnistImage.save("newImage.png")
+		newImage = cv2.imread("newImage.png")
+
+	    # Soruced from: https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
+	    # Reshaping and adding to nparray
+		grayScaleImage = cv2.cvtColor(newImage, cv2.COLOR_BGR2GRAY)
+	    # Converting to float32 and dividing by 255 for attempted normilization(Does not really impact accuracy of web app)
+		grayScaleArray = np.array(grayScaleImage, dtype=np.float32).reshape(1, 784)
+		grayScaleArray /= 255
+
+		return null
 
 app.run()
 
