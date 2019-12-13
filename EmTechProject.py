@@ -8,6 +8,8 @@ import tensorflow as tf
 import base64
 import cv2
 from PIL import Image, ImageOps
+from keras.models import load_model
+
 #graph = tf.get_default_graph()
 #with gzip.open('data/t10k-images-idx3-ubyte.gz', 'rb') as f:
  #   file_content = f.read()
