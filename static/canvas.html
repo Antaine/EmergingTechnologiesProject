@@ -11,18 +11,15 @@
       }
 
       canvas {
-        background-color: white;
-        margin: 5%;
-        /*width: 100%;*/
-        height: 20%;
+        background-color: black;
         align-self: center;
       }
 
-      div.paint{
-        position: relative;
-        width: 100%;
-
-      } 
+      #paint {
+      width: 250px;
+      height: 200px;
+      background-color: black;
+  }
 
       div.btnY{
         position: relative;
@@ -113,6 +110,7 @@
         var canvas = document.getElementById('myCanvas');
         var dataURL = canvas.toDataURL();
         console.log(canvas.toDataURL());
+        result = "Test";
         //Ajax
         $.ajax({
           type: 'POST',
@@ -123,7 +121,7 @@
         }).done(function (data){
           console.log('Posted');
           console.log(data);
-          $("#predictedNumber").empty().append(data);
+          $("#result").empty().append(data);
         });
       }
         

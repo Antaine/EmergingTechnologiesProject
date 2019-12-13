@@ -53,11 +53,11 @@ def getImage():
 
 		   	# Resizing the image so it is suitable for the MNIST dataset
 		   	# Sourced from: https://github.com/python-pillow/Pillow/blob/3.0.x/docs/reference/Image.rst
-	mnistImage = ImageOps.fit(userImage, area, Image.ANTIALIAS)
+	resizeImage = ImageOps.fit(userImage, area, Image.ANTIALIAS)
 
 		    # Saving and loading the new resized images
-	mnistImage.save("newImage.png")
-	newImage = cv2.imread("newImage.png")
+	resizeImage.save("resize.png")
+	newImage = cv2.imread("resize.png")
 
 		    # Soruced from: https://stackoverflow.com/questions/12201577/how-can-i-convert-an-rgb-image-into-grayscale-in-python
 		    # Reshaping and adding to nparray
